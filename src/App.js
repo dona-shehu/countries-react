@@ -1,11 +1,19 @@
 import React, {useState} from 'react'
-import countries from './countries';
 import './App.css';
+import DisplayCountries from './Display-Countries';
 
 function App() {
+  const [countries, setCountries] = useState("")
+
+  const handelEvent = (e) =>{
+    let typedValue = e.target.value.toLowerCase();
+    setCountries(typedValue);
+  }
+
   return (
     <div className="App">
-      
+      <input onChange={handelEvent} type="text" placeholder="search"></input>
+      <DisplayCountries countries = {countries} />
     </div>
   );
 }
